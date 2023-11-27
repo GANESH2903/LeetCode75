@@ -1,0 +1,24 @@
+//passed 58/123
+
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+        String gcd = "";
+        for(int i = 0; i < str2.length(); i++){
+            if(i < str1.length()){
+                if(str1.charAt(i) == str2.charAt(i)){
+                    try{
+                        if(gcd.charAt(0) == str2.charAt(i))
+                            break;
+                    }catch(Exception e){
+
+                    }
+                    gcd = gcd + str2.charAt(i);
+                }
+            }
+            if( str1.substring(i).indexOf(gcd)==-1){
+                return "";
+            }
+        }
+        return gcd;
+    }
+}
