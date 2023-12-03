@@ -1,5 +1,6 @@
 // partially solved
 
+
 class Solution {
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         int a = 0;
