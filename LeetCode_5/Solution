@@ -1,1 +1,21 @@
-
+class Solution {
+    public String reverseVowels(String s) {
+        String vowels = "aeiou";
+        int n = s.length();
+        char[] new_s = s.toCharArray();
+        for(int i = 0; i < n ;i++){
+            if(vowels.indexOf(Character.toLowerCase(s.charAt(i))) != -1){
+                for(int j = n-1; j > i ; j--){
+                    if(vowels.indexOf(Character.toLowerCase(s.charAt(j))) != -1){
+                        char temp = s.charAt(i);
+                        new_s[i] = s.charAt(j);
+                        new_s[j] = temp;
+                        n = j;
+                        break;
+                    }
+                }
+            }
+        }
+        return String.valueOf(new_s);
+    }
+}
