@@ -1,0 +1,24 @@
+import java.util.Arrays;
+class Solution {
+    public int compress(char[] chars) {
+        StringBuilder s = new StringBuilder("");
+        int times = 1;
+        char index = ' ';
+        for(int i = 0 ; i < chars.length; i++){
+            if(index != chars[i]){
+                if(times > 1)
+                    s.append(times);
+                times = 1;
+                s.append(chars[i]);
+                index = chars[i];
+            }
+            else
+                times++;
+                if(times > 1 && i == chars.length -1)
+                    s.append(times);
+        }
+        for(int i = 0 ; i < s.length(); i++)
+            chars[i] = (s.charAt(i));
+        return s.length();
+    }
+}
