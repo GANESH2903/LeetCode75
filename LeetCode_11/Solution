@@ -1,1 +1,13 @@
 
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+         short indi = -1;
+        for(int i = 0; i < s.length(); i++){
+            if(indi < t.indexOf(x.charAt(i))){
+                indi = (short) t.indexOf(s.charAt(i));
+            }
+            else
+                break;
+        }
+    }
+}
