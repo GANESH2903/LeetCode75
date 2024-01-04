@@ -1,4 +1,4 @@
-45/51 testcases passed 
+46/51 testcases passed 
 class Solution {
     public int maxOperations(int[] nums, int k) {
         int count = 0;
