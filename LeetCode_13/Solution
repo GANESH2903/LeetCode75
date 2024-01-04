@@ -1,11 +1,15 @@
-
+45/51 testcases passed 
 class Solution {
     public int maxOperations(int[] nums, int k) {
         int count = 0;
-        
+
         for(int i = 0 ; i < nums.length ; i++){
             for(int j = nums.length - 1 ; j > i ; j--){
                 if(nums[i] + nums[j] == k){
+                    if(nums[i] == 0)
+                        continue;
+                    if(nums[j] == 0)
+                        continue;
                     nums[i] = 0;
                     nums[j] = 0;
                     count++;
