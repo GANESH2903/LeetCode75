@@ -1,1 +1,16 @@
-
+class Solution {
+    public boolean closeStrings(String word1, String word2) {
+        String word = word2;
+        for(int i = 0; i<word1.length(); i++){
+            int index = word2.indexOf(word1.charAt(i));
+            if (index != -1) {
+                    word =  word2.substring(0, index) + word2.substring(index + 1);
+            }
+        }
+        if(word == ""){
+            return true;
+        }
+        else
+            return false;
+    }
+}
