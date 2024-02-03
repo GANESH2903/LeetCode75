@@ -1,32 +1,18 @@
-//   143 / 275 testcases passed
 import java.util.Stack;
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        Stack<Integer> left_asteroids = new Stack<>();
+        Stack<Integer> left_asteroids = new Stack<>(); // new left over asteroids
         for(int i = 0; i<asteroids.length; i++){
-            if(left_asteroids.isEmpty()){
-                left_asteroids.push(asteroids[i]);
-                continue;
-            }
-            if((asteroids[i] > 0 && left_asteroids.peek() > 0) || (asteroids[i] < 0 && left_asteroids.peek() < 0)){
+            if(left_asteroids.isEmpty() || (asteroids[i] > 0 && left_asteroids.peek() > 0) || (asteroids[i] < 0 && left_asteroids.peek() < 0) || (asteroids[i] > 0 && left_asteroids.peek() < 0)){
                 left_asteroids.push(asteroids[i]);
             }
-            else if((asteroids[i] > 0 && left_asteroids.peek() < 0) || (asteroids[i] < 0 && left_asteroids.peek() > 0)){
-                if((left_asteroids.peek()*(-1) == asteroids[i]) || (left_asteroids.peek() == asteroids[i]*(-1))){
+            else if(asteroids[i] < 0 && left_asteroids.peek() > 0){
+                if(left_asteroids.peek() == asteroids[i]*(-1)){
                     left_asteroids.pop();
                 }
-                else if(left_asteroids.peek() < 0){
-                    if(left_asteroids.peek()*(-1) < asteroids[i]){
-                        left_asteroids.pop();
-                        // left_asteroids.push(asteroids[i]);
-                        i--;
-                        
-                    }
-                }
-                else if(asteroids[i] < 0){
+                else{
                     if(left_asteroids.peek() < asteroids[i]*(-1)){
                         left_asteroids.pop();
-                        // left_asteroids.push(asteroids[i]);
                         i--;
                     }
                 }
