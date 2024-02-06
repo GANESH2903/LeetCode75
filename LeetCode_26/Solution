@@ -1,11 +1,17 @@
-// 23 / 34 testcases passed
 class Solution {
     public String decodeString(String s) {
         Stack<String> stack = new Stack<>();
         Stack<Integer> numbers = new Stack<>();
         for(int i =0; i < s.length(); i++){
             try{
-                int num = Integer.parseInt(String.valueOf(s.charAt(i)));
+                int num = 0;
+                while(s.charAt(i) != '['){
+                    num  =  num*10  +  Integer.parseInt(String.valueOf(s.charAt(i)));
+                    i++;
+                    if(s.charAt(i) == '['){
+                        stack.push(String.valueOf(s.charAt(i)));
+                    }
+                }
                 numbers.push(num);
             }
             catch (Exception e){
