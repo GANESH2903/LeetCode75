@@ -1,0 +1,25 @@
+class RecentCounter {
+    Queue<Integer> call;
+    public RecentCounter() {
+        call = new LinkedList<>();
+    }
+    
+    public int ping(int t) {
+        if(call.size() == 0){
+            call.add(t);
+        }
+        else{
+            if(t < 3000){
+                call.add(t); 
+            }
+            else{
+                int margin = t - 3000;
+                while(call.size() != 0 && call.peek() < margin){
+                    call.remove();
+                }
+                call.add(t);
+            }
+        }
+        return call.size();
+    }
+}
