@@ -1,1 +1,25 @@
-
+class Solution {
+    public String predictPartyVictory(String senate) {
+        Queue<Integer> Rvotes = new LinkedList<>();
+        Queue<Integer> Dvotes = new LinkedList<>();
+        for(int i = 0; i < senate.length(); i++){
+            if(senate.charAt(i) == 'R'){
+                Rvotes.add(i);
+            }
+            else{
+                Dvotes.add(i);
+            }
+        }
+        while(!Rvotes.isEmpty() && !Dvotes.isEmpty()){
+            int r = Rvotes.remove();
+            int d = Dvotes.remove();
+            if(r < d){
+                Rvotes.add(r + senate.length());
+            }
+            else{
+                Dvotes.add(d + senate.length());
+            }
+        }
+        return Rvotes.isEmpty() ? "Dire" : "Radiant";
+    }
+}
