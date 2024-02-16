@@ -1,5 +1,3 @@
-23 / 63 testcases passed
-
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -15,6 +13,31 @@
  *     }
  * }
  */
+class Solution {
+    public int goodNodes(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        return depthFirstSearch(root , root.val);
+    }
+    public int depthFirstSearch(TreeNode root , int max){
+        if(root == null){
+            return 0;
+        }
+        if(root.val > max)
+            max = root.val;
+        if(root.val >= max){
+            return 1  + depthFirstSearch(root.left , max) + depthFirstSearch(root.right , max);
+        }
+        return depthFirstSearch(root.left , max) + depthFirstSearch(root.right , max);
+    }
+}
+
+
+
+
+/*
+some error in this code
 class Solution {
     int max = 0;
     int count = 0;
@@ -34,3 +57,4 @@ class Solution {
         return goodNodes(root.left) + goodNodes(root.right);
     }
 }
+*/
